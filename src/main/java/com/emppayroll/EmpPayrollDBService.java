@@ -52,13 +52,48 @@ public class EmpPayrollDBService {
 			String name = rs.getString("name");
 			double salary = rs.getDouble("salary");
 			LocalDate start=rs.getDate("start").toLocalDate();
-			
+
 			EmployeeInfo info = new EmployeeInfo(id, name,salary,start);
 			list.add(info);
 		}
 		System.out.println(list);
 		connection.close();
 		return list;
+	}
+	public void updateSalary() throws Exception
+	{
+		Connection connection =getConnection();
+		String sql="update employee_payroll_table set salary=600000 where name='Dibyesh'";
+		try {
+			Statement statement=connection.createStatement();
+			List <EmployeeInfo> list = new ArrayList();
+			statement.executeUpdate(sql);
+			System.out.println("\n Updated Salary");
+			System.out.println(list);
+			connection.close();
+		}
+
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+
+	}
+	public double retrieveSalary() throws Exception {
+		Connection connection =getConnection();
+		Statement st = connection.createStatement();
+		ResultSet rs  = st.executeQuery("select salary from employee_payroll_table where name = 'Dibyesh' ");
+		double salary = 0 ;
+		while(rs.next()) {
+
+			
+			salary  = rs.getInt("salary");
+			
+		}
+		System.out.println(salary);
+		
+		return salary;
+		
 	}
 }
 
