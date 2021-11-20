@@ -34,4 +34,11 @@ public class EmployeePayrollTest {
 		int actual_salary = 3000000;
 		Assert.assertEquals(updated_salary , actual_salary);
 	}
+
+	@Test
+	public void retrieveData_betweenRange() throws Exception {
+		List<EmployeeInfo> list=  service.retrieveData_inBetween_Range();
+		int actual_size = 3;
+		Assert.assertEquals(actual_size , list.size());
+	}
 }

@@ -86,16 +86,16 @@ public class EmpPayrollDBService {
 		double salary = 0 ;
 		while(rs.next()) {
 
-			
+
 			salary  = rs.getInt("salary");
-			
+
 		}
 		System.out.println(salary);
-		
+
 		return salary;
-		
+
 	}
-	
+
 	public void preparedStatementForEmployeeData() throws Exception{
 		try {
 			Connection connection = this.getConnection();
@@ -107,6 +107,32 @@ public class EmpPayrollDBService {
 			e.printStackTrace();
 		}
 	}
+	
+	public List<EmployeeInfo> retrieveData_inBetween_Range() throws Exception
+    {
+        String sql = "select * from employee_payroll_table where start between cast('2018-03-12' as Date ) AND DATE(NOW())";
+        List< EmployeeInfo> list=new ArrayList();
+        try {
+    		Connection connection =getConnection();
+            Statement statement=connection.createStatement();
+            ResultSet result = statement.executeQuery(sql);
+            while( result.next())
+            {
+                int id=result.getInt("id");
+                String name=result.getString("name");
+                String gender=result.getString("gender");
+                double salary=result.getDouble("salary");
+                LocalDate start=result.getDate("start").toLocalDate();
+                list.add(new EmployeeInfo(id,name,salary,start));
+            }
+            System.out.println("\n Retrieved Data In Range Is:");
+            System.out.println(list);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+		return list;
+
+    }
 }
 
 
