@@ -41,13 +41,19 @@ public class EmployeePayrollTest {
 		int actual_size = 3;
 		Assert.assertEquals(actual_size , list.size());
 	}
-	
+
 	@Test
 	public void SumOfSalaryTest() throws Exception {
 		int updated_salary =(int) service.sumOf_Salary_Based_on_gender();
 		int actual_salary = (int) 1.543E8;
 		Assert.assertEquals(updated_salary , actual_salary);
 	}
-	
-	
+
+	@Test
+	public void avgOfSalaryTest() throws Exception {
+		int updated_salary =(int) service.avgOf_Salary_Based_on_gender();
+		int actual_salary = (int)5.1433333333333336E7;
+		Assert.assertEquals(updated_salary , actual_salary);
+	}
+
 }

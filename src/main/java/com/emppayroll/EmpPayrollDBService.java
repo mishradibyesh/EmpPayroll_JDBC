@@ -148,6 +148,22 @@ public class EmpPayrollDBService {
 		return sum;
 		
 	}
+	
+	public double avgOf_Salary_Based_on_gender() throws Exception {
+		
+		Connection connection =getConnection();
+		Statement st = connection.createStatement();
+		ResultSet rs  = st.executeQuery("select avg(Salary) from employee_payroll_table where Gender = 'F' group by Gender; ");
+		double avg = 0;
+		 while( rs.next())
+         {
+			  avg =rs.getDouble("avg(Salary)");
+         }
+		
+		System.out.println(avg);
+		return avg;
+		
+	}
 }
 
 
