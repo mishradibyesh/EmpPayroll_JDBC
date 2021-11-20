@@ -5,7 +5,7 @@ public class main {
 	public static void main(String[] args) throws Exception {
 
 		EmpPayrollDBService service = new EmpPayrollDBService();
-		service.retrieveData_inBetween_Range();
+		service.sumOf_Salary_Based_on_gender();
 		
 	}
 

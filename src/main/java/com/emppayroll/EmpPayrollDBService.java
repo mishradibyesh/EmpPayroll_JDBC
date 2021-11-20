@@ -133,6 +133,21 @@ public class EmpPayrollDBService {
 		return list;
 
     }
+	public double sumOf_Salary_Based_on_gender() throws Exception {
+		
+		Connection connection =getConnection();
+		Statement st = connection.createStatement();
+		ResultSet rs  = st.executeQuery("select sum(Salary) from employee_payroll_table where Gender = 'F' group by Gender; ");
+		double sum = 0;
+		 while( rs.next())
+         {
+			  sum =rs.getDouble("sum(Salary)");
+         }
+		
+		System.out.println(sum);
+		return sum;
+		
+	}
 }
 
 

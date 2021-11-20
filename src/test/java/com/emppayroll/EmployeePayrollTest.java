@@ -41,4 +41,13 @@ public class EmployeePayrollTest {
 		int actual_size = 3;
 		Assert.assertEquals(actual_size , list.size());
 	}
+	
+	@Test
+	public void SumOfSalaryTest() throws Exception {
+		int updated_salary =(int) service.sumOf_Salary_Based_on_gender();
+		int actual_salary = (int) 1.543E8;
+		Assert.assertEquals(updated_salary , actual_salary);
+	}
+	
+	
 }
