@@ -11,7 +11,7 @@ public class EmployeePayrollTest {
 
 	@Test
 	public void EmployeePayrollDataRetrievedDFromDB_MatchEmployeeCount() throws Exception {
-	
+
 
 
 		List<EmployeeInfo> list = EmpPayrollDBService.getDataFromDB();
@@ -28,4 +28,10 @@ public class EmployeePayrollTest {
 
 	}
 
+	@Test
+	public void matchPreParedUpdatedSalaryDataToDB() throws Exception {
+		int updated_salary =(int) service.retrieveSalary();
+		int actual_salary = 3000000;
+		Assert.assertEquals(updated_salary , actual_salary);
+	}
 }

@@ -95,6 +95,18 @@ public class EmpPayrollDBService {
 		return salary;
 		
 	}
+	
+	public void preparedStatementForEmployeeData() throws Exception{
+		try {
+			Connection connection = this.getConnection();
+			String sql = "update employee_payroll_table set salary=3000000 where name = ?";
+			PreparedStatement psmt = connection.prepareStatement(sql);
+			psmt.setString(1, "Dibyesh");
+			int i = psmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }
 
 

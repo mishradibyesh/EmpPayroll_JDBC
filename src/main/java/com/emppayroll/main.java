@@ -6,6 +6,7 @@ public class main {
 
 		EmpPayrollDBService service = new EmpPayrollDBService();
 		service.retrieveSalary();
+		
 	}
 
 }
