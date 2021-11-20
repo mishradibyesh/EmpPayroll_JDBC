@@ -1,10 +1,13 @@
 package com.emppayroll;
 import java.sql.*;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.List;
 
 public class EmpPayrollDBService {
 
-	public static void main(String[] args) throws SQLException {
+	public static Connection getConnection() throws Exception  {
 
 		String url = "jdbc:mysql://localhost:3306/payroll_service?useSSL=false";
 		String uname = "root";
@@ -32,11 +35,31 @@ public class EmpPayrollDBService {
 		} 
 		catch (SQLException e) {
 			e.printStackTrace();
-		} 
+		}
+		return connection; 
 
-		connection.close();
 	}
 
+	public static List<EmployeeInfo> getDataFromDB() throws Exception {
+
+		Connection connection =getConnection();
+		Statement st = connection.createStatement();
+		ResultSet rs  = st.executeQuery("select * from employee_payroll_table ");
+		List <EmployeeInfo> list = new ArrayList();
+		while(rs.next()) {
+
+			int id  =rs.getInt("id");
+			String name = rs.getString("name");
+			double salary = rs.getDouble("salary");
+			LocalDate start=rs.getDate("start").toLocalDate();
+			
+			EmployeeInfo info = new EmployeeInfo(id, name,salary,start);
+			list.add(info);
+		}
+		System.out.println(list);
+		connection.close();
+		return list;
+	}
 }
 
 
