@@ -16,7 +16,7 @@ public class EmployeePayrollTest {
 
 		List<EmployeeInfo> list = EmpPayrollDBService.getDataFromDB();
 
-		int actual_size = 6;
+		int actual_size = 7;
 		Assert.assertEquals(actual_size , list.size());
 	}
 	@Test
@@ -54,6 +54,11 @@ public class EmployeePayrollTest {
 		int updated_salary =(int) service.avgOf_Salary_Based_on_gender();
 		int actual_salary = (int)5.1433333333333336E7;
 		Assert.assertEquals(updated_salary , actual_salary);
+	}
+	
+	@Test
+	public void AddNewEmployyee() throws Exception {
+	service.add_new_employee_to_the_Database();	
 	}
 
 }
