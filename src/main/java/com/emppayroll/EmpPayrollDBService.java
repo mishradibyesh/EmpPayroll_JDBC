@@ -70,10 +70,7 @@ public class EmpPayrollDBService {
 		String sql="update employee_payroll_table set salary=600000 where name='Dibyesh'";
 		try {
 			Statement statement=connection.createStatement();
-			List <EmployeeInfo> list = new ArrayList();
 			statement.executeUpdate(sql);
-			System.out.println("\n Updated Salary");
-			System.out.println(list);
 			connection.close();
 		}
 
