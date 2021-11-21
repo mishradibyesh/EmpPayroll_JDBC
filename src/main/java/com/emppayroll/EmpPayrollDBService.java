@@ -25,7 +25,7 @@ public class EmpPayrollDBService {
 		Enumeration<Driver> drivers = DriverManager.getDrivers();
 		while(drivers.hasMoreElements()) {
 			Driver driver = drivers.nextElement();
-			System.out.println("Driver  Name is :" + driver);
+			System.out.println("Driver  Name :" + driver);
 		}
 
 		//making connection
@@ -173,7 +173,7 @@ public class EmpPayrollDBService {
 
 	}
 	
-	//adding new emplyee into the database
+	//adding new employee into the database
 	public void add_new_employee_to_the_Database() throws Exception {
 		Connection connection =getConnection();
 		String sql="insert into employee_payroll_table (name,salary,gender, start ) VALUES ('Elon', 1888888,'M', '2020-11-12')";
