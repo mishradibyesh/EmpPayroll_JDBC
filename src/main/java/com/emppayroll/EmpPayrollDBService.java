@@ -25,7 +25,7 @@ public class EmpPayrollDBService {
 		Enumeration<Driver> drivers = DriverManager.getDrivers();
 		while(drivers.hasMoreElements()) {
 			Driver driver = drivers.nextElement();
-			System.out.println("Driver  Name is :" + driver);
+			System.out.println("Driver  Name :" + driver);
 		}
 
 		//making connection
@@ -70,10 +70,7 @@ public class EmpPayrollDBService {
 		String sql="update employee_payroll_table set salary=600000 where name='Dibyesh'";
 		try {
 			Statement statement=connection.createStatement();
-			List <EmployeeInfo> list = new ArrayList();
 			statement.executeUpdate(sql);
-			System.out.println("\n Updated Salary");
-			System.out.println(list);
 			connection.close();
 		}
 
@@ -176,7 +173,7 @@ public class EmpPayrollDBService {
 
 	}
 	
-	//adding new emplyee into the database
+	//adding new employee into the database
 	public void add_new_employee_to_the_Database() throws Exception {
 		Connection connection =getConnection();
 		String sql="insert into employee_payroll_table (name,salary,gender, start ) VALUES ('Elon', 1888888,'M', '2020-11-12')";
